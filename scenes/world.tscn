@@ -1,17 +1,14 @@
-[gd_scene load_steps=35 format=3 uid="uid://cljnvo8c35e2f"]
+[gd_scene load_steps=32 format=3 uid="uid://cljnvo8c35e2f"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_0pan3"]
 [ext_resource type="Texture2D" uid="uid://4vi5gr6qeq4t" path="res://assets/textures/tileset/TX Tileset Grass.png" id="2_2u54o"]
 [ext_resource type="AudioStream" uid="uid://cnt4kfaxrf1m4" path="res://assets/sound/dennis/epic_battle_music/epic_battle_music_1.wav" id="2_c5w8d"]
 [ext_resource type="Texture2D" uid="uid://dum7ao5en3qci" path="res://assets/textures/tileset/TX Tileset Wall.png" id="3_37w6c"]
 [ext_resource type="PackedScene" uid="uid://be4tyysntxt3b" path="res://scenes/enemy_spawner.tscn" id="3_ce7e4"]
-[ext_resource type="PackedScene" uid="uid://dv7ssakshwy0m" path="res://scenes/actors/camera.tscn" id="4_s5e2o"]
-[ext_resource type="PackedScene" uid="uid://ynx1yskjmkv" path="res://scenes/actors/player/player.tscn" id="5_7ouwq"]
 [ext_resource type="Texture2D" uid="uid://gh3qrrvfiukp" path="res://assets/textures/tileset/tileset x1.png" id="5_wes46"]
 [ext_resource type="PackedScene" uid="uid://r7o2uqjnsoue" path="res://scenes/ui/cursor.tscn" id="6_o6o6i"]
 [ext_resource type="Texture2D" uid="uid://buk4lsvnautig" path="res://assets/textures/tileset/Inside_C.png" id="6_ujhhu"]
 [ext_resource type="Texture2D" uid="uid://8vvdy4f7ifyr" path="res://assets/textures/tileset/Inside_D.png" id="7_8ahp0"]
-[ext_resource type="PackedScene" uid="uid://db1mcjdb50qip" path="res://scenes/ui/hud.tscn" id="8_5bqy1"]
 [ext_resource type="Texture2D" uid="uid://c4a7t4c2sl21q" path="res://assets/textures/tileset/B (for release).png" id="8_cvx8x"]
 [ext_resource type="Texture2D" uid="uid://c2tc7objesasc" path="res://assets/textures/tileset/TopDownHouse_FurnitureState1.png" id="8_g2cy8"]
 [ext_resource type="PackedScene" uid="uid://bae3bmtub7c1d" path="res://scenes/common/tree.tscn" id="9_b8ctk"]
@@ -18054,23 +18051,13 @@ position = Vector2(421, 271)
 [node name="Marker2D8" type="Marker2D" parent="EnemySpawner/SpawnPoints" index="7"]
 position = Vector2(-399, 235)
 
-[node name="CameraStick" parent="." instance=ExtResource("4_s5e2o")]
-position = Vector2(2, -24)
-
-[node name="Player" parent="." instance=ExtResource("5_7ouwq")]
-position = Vector2(2, -24)
-
-[node name="RTCamera" parent="Player" index="6"]
-remote_path = NodePath("../../CameraStick")
-
 [node name="Cursor" parent="." instance=ExtResource("6_o6o6i")]
-
-[node name="HUD" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_5bqy1")]
-health_component = NodePath("../Player/HealthComponent")
 
 [node name="CoffeeItem" parent="." instance=ExtResource("11_wh4lg")]
 position = Vector2(64, -95)
 
+[node name="Players" type="Node2D" parent="."]
+unique_name_in_owner = true
+y_sort_enabled = true
+
 [editable path="EnemySpawner"]
-[editable path="Player"]
-[editable path="Player/Hurtbox"]
