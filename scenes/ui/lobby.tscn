@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://koaok1iq5uho"]
+
+[ext_resource type="Theme" uid="uid://bmfa5joyltbk6" path="res://scenes/ui/themes/default_theme.tres" id="1_fm8b2"]
+[ext_resource type="Script" path="res://scenes/ui/lobby.gd" id="2_km0c3"]
+
+[node name="Lobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fm8b2")
+script = ExtResource("2_km0c3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.231373, 0.286275, 1)
+
+[node name="PlayerList" type="ItemList" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -99.5
+offset_right = 212.0
+offset_bottom = 99.5
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 8
+item_count = 3
+item_0/text = "List"
+item_1/text = "Of"
+item_2/text = "Players"
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 283.0
+offset_top = 122.0
+offset_right = 400.0
+offset_bottom = 231.0
+
+[node name="StartGame" type="Button" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -265.0
+offset_top = 169.0
+offset_right = -97.0
+offset_bottom = 204.0
+text = "START GAME"
+
+[connection signal="pressed" from="Control/StartGame" to="." method="_on_start_game_pressed"]

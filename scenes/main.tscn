@@ -1,10 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bljo4u0ajo6e4"]
+[gd_scene load_steps=2 format=3 uid="uid://bljo4u0ajo6e4"]
 
-[ext_resource type="PackedScene" uid="uid://r7o2uqjnsoue" path="res://scenes/ui/cursor.tscn" id="1_ol35d"]
 [ext_resource type="PackedScene" uid="uid://bstjhhorb51j" path="res://scenes/ui/menus/main_menu.tscn" id="1_v0r8l"]
 
 [node name="Main" type="Node"]
-
-[node name="Cursor" parent="." instance=ExtResource("1_ol35d")]
 
 [node name="Main Menu" parent="." instance=ExtResource("1_v0r8l")]
