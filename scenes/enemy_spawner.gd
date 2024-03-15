@@ -2,7 +2,7 @@ extends Node2D
 
 @export var game_stats: GameStats = preload("res://resources/game_stats.tres")
 @export var entity: PackedScene = preload("res://scenes/actors/enemy/enemy.tscn")
-@export var max_spawned := 20
+@export var max_spawned := 0
 
 @onready var spawned_entities_node: Node2D = $SpawnedEntities
 @onready var timer: Timer = %Timer
