@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ynx1yskjmkv"]
+[gd_scene load_steps=16 format=3 uid="uid://ynx1yskjmkv"]
 
 [ext_resource type="Script" path="res://scenes/actors/player/player.gd" id="1_hkfg0"]
 [ext_resource type="PackedScene" uid="uid://cw242vwu63unm" path="res://scenes/components/velocity_component.tscn" id="2_ard2g"]
@@ -9,8 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://c8kb6nv0bniok" path="res://assets/textures/actors/sam.png" id="5_mtji8"]
 [ext_resource type="Script" path="res://scenes/actors/player/iframes.gd" id="6_sn550"]
 [ext_resource type="PackedScene" uid="uid://c44xhc34vg58v" path="res://scenes/overlap/hurtbox.tscn" id="7_uabu0"]
-[ext_resource type="PackedScene" uid="uid://db1mcjdb50qip" path="res://scenes/ui/hud.tscn" id="10_r142w"]
-[ext_resource type="Theme" uid="uid://bmfa5joyltbk6" path="res://scenes/ui/themes/default_theme.tres" id="11_5u8el"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e3xyy"]
 radius = 5.0
@@ -91,9 +89,9 @@ unique_name_in_owner = true
 material = SubResource("ShaderMaterial_rnuo4")
 texture = ExtResource("5_mtji8")
 
-[node name="TurnCenter" type="Node2D" parent="Body"]
+[node name="Node2D" type="Node2D" parent="Body"]
 
-[node name="Gun" parent="Body/TurnCenter" instance=ExtResource("5_cj8qp")]
+[node name="Gun" parent="Body/Node2D" instance=ExtResource("5_cj8qp")]
 unique_name_in_owner = true
 position = Vector2(7, 0)
 
@@ -122,28 +120,6 @@ position = Vector2(0, -0.1875)
 shape = SubResource("RectangleShape2D_1io08")
 
 [node name="RTCamera" type="RemoteTransform2D" parent="."]
-
-[node name="HUD" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("10_r142w")]
-health_component = NodePath("../HealthComponent")
-
-[node name="NameTag" type="Label" parent="."]
-unique_name_in_owner = true
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -51.0
-offset_right = 44.0
-offset_bottom = -41.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme = ExtResource("11_5u8el")
-theme_override_font_sizes/font_size = 8
-text = "Player Name"
-horizontal_alignment = 1
 
 [connection signal="no_hp" from="HealthComponent" to="." method="die"]
 [connection signal="hit" from="Hurtbox" to="." method="_on_hurtbox_hit"]
