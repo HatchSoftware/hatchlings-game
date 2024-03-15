@@ -13,9 +13,10 @@ func _ready():
 func reduce_cooldown():
 	cooldown.wait_time = max(0.05, cooldown.wait_time - 0.01)
 
-
+@rpc("any_peer", "call_local", "reliable", 0)
 func shoot():
 	if cooldown.is_stopped():
+		print("shot", multiplayer.get_unique_id())
 		var b: Node2D = bullet.instantiate()
 		var pos = %Muzzle.global_position
 

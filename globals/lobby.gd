@@ -1,5 +1,8 @@
 extends Node
 
+@onready var world_scene = preload("res://scenes/world.tscn")
+@onready var player_scene = preload("res://scenes/actors/player/player.tscn")
+
 # These signals can be connected to by a UI lobby scene or the game scene.
 signal player_connected(peer_id, player_info)
 signal player_disconnected(peer_id)
@@ -51,12 +54,21 @@ func create_game(port = 6969):
 func remove_multiplayer_peer():
 	multiplayer.multiplayer_peer = null
 
-
 # When the server decides to start the game from a UI scene,
-# do Lobby.load_game.rpc(filepath)
 @rpc("call_local", "reliable")
-func load_game(game_scene_path):
-	get_tree().change_scene_to_file(game_scene_path)
+func load_game():
+	get_tree().change_scene_to_packed(world_scene)
+	await get_tree().process_frame # unload
+	await get_tree().process_frame # load
+
+	var world: World = get_tree().current_scene
+	
+	for p in players:
+		var scene: Player = player_scene.instantiate()
+		scene.set_player_name(players[p].name)
+		scene.set_multiplayer_authority(p, true)
+		scene.set_name(str(p))
+		world.players.add_child(scene)
 
 
 # Every peer will call this when they have loaded the game scene.
@@ -65,7 +77,6 @@ func player_loaded():
 	if multiplayer.is_server():
 		players_loaded += 1
 		if players_loaded == players.size():
-			# $/root/Game.start_game()
 			players_loaded = 0
 
 

@@ -23,5 +23,5 @@ func _refresh_player_list():
 		player_list.add_item(text)
 
 func _on_start_game_pressed():
-	Lobby.load_game.rpc("res://scenes/world.tscn")
+	Lobby.load_game.rpc()
 
