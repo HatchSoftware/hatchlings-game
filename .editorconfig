@@ -1,0 +1,6 @@
+[*]
+end_of_line = lf
+insert_final_newline = true
+# Godot guidelines specify to use tabs instead of spaces.
+# Mixed tabs/spaces cause issues
+indent_style = tab

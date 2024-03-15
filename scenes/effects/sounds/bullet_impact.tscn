@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnqna3nqdcmjl"]
+
+[ext_resource type="AudioStream" uid="uid://befbeeyg0skwq" path="res://assets/sound/523089__magnuswaker__explosion-1.wav" id="1_paisb"]
+
+[node name="BulletImpact" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_paisb")
+volume_db = -9.006
+pitch_scale = 2.17
+autoplay = true

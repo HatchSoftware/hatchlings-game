@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://58layu2q0bjm"]
+
+[ext_resource type="Script" path="res://scenes/items/bullet.gd" id="1_jlo7m"]
+[ext_resource type="Texture2D" uid="uid://cijhkh6h207pc" path="res://assets/textures/items/bullet.png" id="2_c63kd"]
+[ext_resource type="PackedScene" uid="uid://bfqlgc35dbc7y" path="res://scenes/overlap/hitbox.tscn" id="4_ada8t"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1oenb"]
+direction = Vector3(-1, 0, 0)
+spread = 2.0
+initial_velocity_max = 269.66
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afcum"]
+size = Vector2(10, 5)
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_jlo7m")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_1oenb")
+trail_enabled = true
+trail_lifetime = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5, 1)
+texture = ExtResource("2_c63kd")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+scale = Vector2(1.0163, 0.685896)
+color = Color(0.939139, 0.515368, 0.202057, 1)
+polygon = PackedVector2Array(5, 0, 3, -3, -3, -3, -3, 3, 3, 3)
+
+[node name="Hitbox" parent="." instance=ExtResource("4_ada8t")]
+unique_name_in_owner = true
+collision_layer = 64
+collision_mask = 513
+single_use = true
+knockback_multiplier = 200.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(5, 0)
+shape = SubResource("RectangleShape2D_afcum")
+debug_color = Color(0.92549, 0.227451, 0.380392, 0.419608)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="Hitbox"]

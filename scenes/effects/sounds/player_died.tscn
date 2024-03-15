@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddrcsdmmju65g"]
+
+[ext_resource type="AudioStream" uid="uid://21um5tpsqc1d" path="res://assets/sound/dennis/pain_long/pain_long_3.wav" id="1_tnfo6"]
+
+[node name="PlayerDied" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_tnfo6")
+autoplay = true

@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=3 uid="uid://bstjhhorb51j"]
+
+[ext_resource type="Script" path="res://scenes/ui/menus/main_menu.gd" id="1_tqulc"]
+[ext_resource type="Theme" uid="uid://bmfa5joyltbk6" path="res://scenes/ui/themes/default_theme.tres" id="2_v7833"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_v7833")
+script = ExtResource("1_tqulc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.254902, 0.294118, 0.360784, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -20.0
+offset_right = 44.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.662745, 0.101961, 0.109804, 1)
+theme_override_font_sizes/font_size = 24
+text = "BEGIJNENDIJK'S
+EXTERMINATION"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.403922, 0.121569, 0.00784314, 1)
+text = "SAM RETURNS"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 86.47)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -12.0
+offset_right = 86.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("2_v7833")
+text = "Start"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -16.0
+offset_right = 208.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 8
+text = "Made by Hatch Game Studio"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Control/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://cco48lldgqw2y"]
+
+[ext_resource type="Script" path="res://scenes/actors/player/weapons/gun.gd" id="1_ara2f"]
+[ext_resource type="Texture2D" uid="uid://osb0e4d4ya3n" path="res://assets/textures/items/gun.png" id="2_8i21o"]
+[ext_resource type="AudioStream" uid="uid://dabb15cenhco3" path="res://assets/sound/gunshort01_GokhanBiyik.wav" id="3_fal4n"]
+
+[node name="Gun" type="Node2D"]
+position = Vector2(-1, 1)
+script = ExtResource("1_ara2f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, 2.1626)
+texture = ExtResource("2_8i21o")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(20, -1)
+scale = Vector2(1.00322, 1.01626)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.055226, -1.98504)
+stream = ExtResource("3_fal4n")
+volume_db = -5.474
+pitch_scale = 0.82
+
+[node name="Cooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.3
+one_shot = true
+
+[node name="polygons" type="Node2D" parent="."]
+visible = false
+scale = Vector2(1.97, 1.97)
+
+[node name="Polygon2D" type="Polygon2D" parent="polygons"]
+color = Color(0.431373, 0.270588, 0.054902, 1)
+polygon = PackedVector2Array(-4, 2, -4, -1, 2, -1)
+
+[node name="Polygon2D2" type="Polygon2D" parent="polygons"]
+color = Color(0.227451, 0.227451, 0.227451, 1)
+polygon = PackedVector2Array(1, 0, 1, -2, 9, -2, 9, 0)
+
+[node name="Polygon2D3" type="Polygon2D" parent="polygons"]
+color = Color(0.52549, 0.329412, 0.0862745, 1)
+polygon = PackedVector2Array(2, 0, 2, 1, 1, 2, 1, 0)
+
+[node name="Polygon2D4" type="Polygon2D" parent="polygons"]
+color = Color(0.152941, 0.152941, 0.152941, 1)
+polygon = PackedVector2Array(9, -1, 12, -1, 12, -2, 13, -1, 14, -1, 14, 0, 9, 0)
+
+[node name="Polygon2D5" type="Polygon2D" parent="polygons"]
+color = Color(0.341176, 0.341176, 0.341176, 1)
+polygon = PackedVector2Array(7, 0, 7, 2, 6, 3, 5, 3, 6, 2, 6, 0)

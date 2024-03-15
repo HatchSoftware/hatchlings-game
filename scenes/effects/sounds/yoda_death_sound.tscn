@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://chm85j8klaica"]
+
+[ext_resource type="AudioStream" uid="uid://i01butdt8ht" path="res://assets/sound/lego-yoda-death-scream.mp3" id="1_d4ytc"]
+
+[node name="YodaDeathSound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_d4ytc")
+autoplay = true

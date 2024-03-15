@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqlesv5rada3i"]
+
+[ext_resource type="AudioStream" uid="uid://d4cyqc7tql5ti" path="res://assets/sound/dennis/drink/drink_2.wav" id="1_hxhm4"]
+
+[node name="DrinkSound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_hxhm4")
+autoplay = true
